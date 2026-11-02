@@ -1,0 +1,24 @@
+
+extends ../layout
+
+block content
+  h2 Add New Movie
+
+  form(action="/movies", method="POST")
+    label(for="title") Movie Title
+    input(type="text", id="title", name="title", required)
+
+    label(for="year") Release Year
+    input(type="number", id="year", name="year", min="1888", required)
+
+    label(for="genre") Genre
+    input(type="text", id="genre", name="genre", required)
+
+    label(for="rating") Rating (0-10)
+    input(type="number", id="rating", name="rating", min="0", max="10", step="0.1", required)
+
+    label(for="watched")
+      input(type="checkbox", id="watched", name="watched")
+      |  Watched
+
+    button(type="submit") Add Movie

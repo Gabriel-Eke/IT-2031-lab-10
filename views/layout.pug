@@ -1,0 +1,38 @@
+
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    )
+    title= pageTitle
+    link(rel="stylesheet", href="/style.css")
+
+  body
+    header
+      h1 Movie Collection
+
+      nav
+        a(href="/movies") All Movies
+
+        if isAuthenticated
+          a(href="/movies/new") Add Movie
+
+          span  Signed in as #{currentUser.username}
+
+          form(
+            action="/logout"
+            method="POST"
+            style="display: inline;"
+          )
+            button(type="submit") Logout
+        else
+          a(href="/login") Login
+
+    main
+      block content
+
+    footer
+      p IT 2031 - Lab 9

@@ -1,0 +1,33 @@
+
+extends ../layout
+include ../mixins/movieBadge
+
+block content
+  h2 My Movies
+
+  p Watched: #{watchedCount} | Unwatched: #{unwatchedCount}
+
+  if movies.length === 0
+    p No movies available. Add your first movie!
+  else
+    table
+      thead
+        tr
+          th Title
+          th Year
+          th Genre
+          th Rating
+          th Status
+          th Details
+
+      tbody
+        each movie in movies
+          tr
+            td= movie.title
+            td= movie.year
+            td= movie.genre
+            td= movie.rating
+            td
+              +movieBadge(movie.watched)
+            td
+              a(href="/movies/" + movie.id) View

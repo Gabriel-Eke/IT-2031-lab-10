@@ -1,0 +1,61 @@
+
+extends ../layout
+
+block content
+  h1 Edit Movie
+
+  form(action="/movies/" + movie.id + "/edit" method="POST")
+    div
+      label(for="title") Movie Title
+      input#title(
+        type="text"
+        name="title"
+        value=movie.title
+        required
+      )
+
+    div
+      label(for="year") Release Year
+      input#year(
+        type="number"
+        name="year"
+        value=movie.year
+        min="1888"
+        required
+      )
+
+    div
+      label(for="genre") Genre
+      input#genre(
+        type="text"
+        name="genre"
+        value=movie.genre
+        required
+      )
+
+    div
+      label(for="rating") Rating
+      input#rating(
+        type="number"
+        name="rating"
+        value=movie.rating
+        min="0"
+        max="10"
+        step="0.1"
+        required
+      )
+
+    div
+      label(for="watched")
+        input#watched(
+          type="checkbox"
+          name="watched"
+          checked=movie.watched
+        )
+        |  Watched
+
+    div
+      button(type="submit") Save Changes
+
+  p
+    a(href="/movies/" + movie.id) Cancel

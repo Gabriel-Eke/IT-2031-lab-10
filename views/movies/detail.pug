@@ -1,0 +1,35 @@
+
+extends ../layout
+include ../mixins/movieBadge
+
+block content
+  h2= movie.title
+
+  .movie-details
+    p
+      strong Year:
+      |  #{movie.year}
+
+    p
+      strong Genre:
+      |  #{movie.genre}
+
+    p
+      strong Rating:
+      |  #{movie.rating}
+
+    p
+      strong Status:
+      |  
+      +movieBadge(movie.watched)
+
+  if movie.watched
+    p You have watched this movie.
+  else
+    p You have not watched this movie yet.
+
+  form(action="/movies/" + movie.id + "/delete", method="POST")
+    button(type="submit") Delete Movie
+
+  p
+    a(href="/movies") Back to Movies

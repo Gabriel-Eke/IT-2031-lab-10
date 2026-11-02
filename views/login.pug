@@ -1,0 +1,35 @@
+
+extends layout
+
+block content
+  section
+    h2 Sign In
+
+    p Sign in to manage your movie collection.
+
+    if error
+      p(role="alert", style="color: #b91c1c;")
+        = error
+
+    form(action="/login", method="POST")
+      div
+        label(for="username") Username
+        input(
+          type="text"
+          id="username"
+          name="username"
+          required
+          autocomplete="username"
+        )
+
+      div
+        label(for="password") Password
+        input(
+          type="password"
+          id="password"
+          name="password"
+          required
+          autocomplete="current-password"
+        )
+
+      button(type="submit") Sign In
